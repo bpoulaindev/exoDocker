@@ -15,4 +15,5 @@ mkdir www/apache && cd www/apache && touch dockerfile && touch local.apache.conf
 ## Explications
 
 - Création dockerfile pour configuration custom de apache et lui permettre d'exécuter du code php
+- Fichier de configuration local apache, pour ne pas modifier le fichier de conf global
 
