@@ -1,0 +1,26 @@
+services:
+  apache:
+    image: httpd:2.4
+    ports:
+      - "80:80"
+    volumes:
+      - ~/Users/bpoulain/projects/exo6/www:/usr/local/apache2/htdocs/
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: poisson
+      MYSQL_DATABASE: articles
+      MYSQL_USER: poisson
+      MYSQL_PASSWORD: poisson
+    volumes:
+      - ~/Users/bpoulain/projects/exo6/db_data:/var/lib/mysql
+    platform: linux/x86_64
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: poisson
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
