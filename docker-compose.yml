@@ -1,10 +1,12 @@
 services:
   apache:
-    image: httpd:2.4
+    build: ./www/php
     ports:
       - "80:80"
     volumes:
-      - ~/Users/bpoulain/projects/exo6/www:/Library/WebServer/Documents/
+      - ./www/src:/usr/local/apache2/htdocs/
+    depends_on:
+      - php
   mysql:
     image: mysql:5.7
     environment:
@@ -24,3 +26,9 @@ services:
       - "8080:80"
     depends_on:
       - mysql
+  php:
+    image: php:7.4-fpm
+    volumes:
+      - ./www/src:/usr/local/apache2/htdocs/
+    ports:
+      - "9000:9000"
