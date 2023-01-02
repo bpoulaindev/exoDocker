@@ -1,6 +1,6 @@
 services:
   apache:
-    build: ./www/php
+    build: ./www/apache
     ports:
       - "80:80"
     volumes:
